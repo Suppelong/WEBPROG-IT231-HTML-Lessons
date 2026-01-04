@@ -3,9 +3,10 @@
 
 :root {
     --primary-color: #0d6efd; /* Brighter Blue */
+    --accent-color: #18bc9c;  /* Teal */
     --secondary-color: #6c757d;
     --dark-bg: #212529;
-    --light-bg: #eff2f7; /* Soft Gray Background */
+    --light-bg: #eff2f7; 
     --card-bg: #ffffff;
 }
 
@@ -18,7 +19,7 @@ body {
 
 /* 2. Navigation */
 .navbar {
-    background-color: #1a1a2e !important; /* Dark Navy */
+    background-color: #1a1a2e !important;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     padding: 1rem 0;
 }
@@ -52,7 +53,7 @@ header h1 {
 /* 4. Section Styling */
 section {
     position: relative;
-    scroll-margin-top: 70px; /* Prevents navbar from covering section title on click */
+    scroll-margin-top: 70px;
 }
 
 .bg-white {
@@ -68,15 +69,15 @@ section {
     padding-bottom: 10px;
 }
 
-/* --- NEW: Profile Picture Styling --- */
+/* 5. Profile Picture */
 .profile-img {
     width: 250px;
     height: 250px;
-    object-fit: cover; /* Ensures the image doesn't stretch */
-    border: 5px solid white; /* Adds a clean white frame */
+    object-fit: cover;
+    border: 5px solid white;
 }
 
-/* 5. Buttons */
+/* 6. Buttons */
 .btn-primary {
     background-color: var(--primary-color);
     border: none;
@@ -88,7 +89,7 @@ section {
     transform: scale(1.02);
 }
 
-/* 6. Gallery Cards */
+/* 7. Gallery Cards */
 .project-card {
     border-radius: 12px;
     overflow: hidden;
@@ -114,10 +115,10 @@ section {
 }
 
 .project-card:hover .card-img-top {
-    transform: scale(1.1); /* Zoom effect */
+    transform: scale(1.1);
 }
 
-/* 7. Footer & Social Icons */
+/* 8. Footer & Social Icons */
 footer {
     background-color: #1a1a2e;
 }
@@ -138,4 +139,50 @@ footer {
 .social-icons a:hover {
     background-color: var(--primary-color);
     transform: translateY(-3px);
+}
+
+/* 9. Education Timeline Styling */
+.timeline {
+    border-left: 3px solid var(--primary-color);
+    margin-left: 10px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -39px; 
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border: 3px solid var(--accent-color);
+    border-radius: 50%;
+}
+
+.timeline-year {
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.timeline-school {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.timeline-degree {
+    font-style: italic;
+    color: var(--secondary-color);
+    margin-bottom: 0;
 }

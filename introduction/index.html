@@ -24,6 +24,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#personal">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="#guestbook">Leave a comment</a></li>
@@ -75,6 +76,50 @@
             </div>
         </div>
     </section>
+
+    <section id="education" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">Education</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-year">2024 - Present</span>
+                            <h3 class="timeline-school">Asia Pacific College</h3>
+                            <p class="timeline-degree">Bachelor of Science in Information Technology (BSIT)</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-year">2022 - 2024</span>
+                            <h3 class="timeline-school">Paranaque National High School - Baclaran</h3>
+                            <p class="timeline-degree">Senior High School | TVL Track</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-year">2019 - 2020</span>
+                            <h3 class="timeline-school">Baclaran ALS Center</h3>
+                            <p class="timeline-degree">Alternative Learning System (ALS) Completion</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-year">2008 - 2011</span>
+                            <h3 class="timeline-school">Pasay City North High School - Annex</h3>
+                            <p class="timeline-degree">Junior High School</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-year">2003 - 2008</span>
+                            <h3 class="timeline-school">Cuneta Elementary School</h3>
+                            <p class="timeline-degree">Primary Education</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div id="app">
         
         <section id="projects" class="py-5">
@@ -157,7 +202,7 @@
             }
         })
 
-        // 2. PERSONAL GALLERY COMPONENT (Ensure these match your actual personal photos)
+        // 2. PERSONAL GALLERY COMPONENT
         app.component('personal-gallery', {
             template: `
                 <div class="row g-4">
@@ -176,7 +221,7 @@
             `,
             data() {
                 return {
-                    // IMPORTANT: Update these filenames to pictures you want in your personal gallery
+                    // Make sure these files exist in your images folder!
                     images: [
                         { src: 'images/Beejay.jpg', title: 'My Portrait', alt: 'Portrait', caption: 'A casual shot.' },
                         { src: 'images/BorrowIT.png', title: 'Gaming', alt: 'Gaming', caption: 'Playing online games.' },
