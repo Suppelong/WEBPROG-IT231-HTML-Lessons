@@ -10,12 +10,24 @@
     --card-bg: #ffffff;
 }
 
+/* --- NEW: MOVING BACKGROUND ANIMATION --- */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--light-bg);
     color: #333;
     line-height: 1.7;
+    
+    /* The Moving Gradient */
+    background: linear-gradient(-45deg, #eff2f7, #dbeafe, #e0f2f1, #e3f2fd);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
 }
+/* ---------------------------------------- */
 
 /* 2. Navigation */
 .navbar {
@@ -39,9 +51,12 @@ body {
     color: var(--primary-color) !important;
 }
 
-/* 3. Hero Header */
+/* 3. Hero Header - ALSO ANIMATED */
 header {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    /* Made this gradient move too for a cooler effect */
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #1a1a2e);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
     padding: 120px 0 100px;
     margin-bottom: 0;
 }
@@ -50,14 +65,23 @@ header h1 {
     font-weight: 700;
 }
 
-/* 4. Section Styling */
+/* 4. Section Styling & Glassmorphism */
 section {
     position: relative;
     scroll-margin-top: 70px;
 }
 
-.bg-white {
-    background-color: var(--card-bg) !important;
+/* NEW: Makes sections see-through so you can see the moving background */
+.bg-white, .bg-light, #about, #education, #projects, #personal, #guestbook {
+    background-color: rgba(255, 255, 255, 0.85) !important; /* Semi-transparent */
+    backdrop-filter: blur(5px); /* Blurs the background behind */
+}
+
+/* Add some spacing between sections so the background shows in the gaps */
+section {
+    margin-bottom: 2rem; 
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 .section-title {
@@ -94,7 +118,7 @@ section {
     border-radius: 12px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: white;
+    background: rgba(255, 255, 255, 0.95); /* Slightly less transparent for readability */
 }
 
 .project-card:hover {
