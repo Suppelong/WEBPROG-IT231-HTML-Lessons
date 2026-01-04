@@ -10,7 +10,7 @@
     --card-bg: #ffffff;
 }
 
-/* --- NEW: MOVING BACKGROUND ANIMATION --- */
+/* --- ANIMATION DEFINITION --- */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -21,13 +21,14 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #333;
     line-height: 1.7;
-    
-    /* The Moving Gradient */
-    background: linear-gradient(-45deg, #eff2f7, #dbeafe, #e0f2f1, #e3f2fd);
+
+    /* --- BOLD MOVING BACKGROUND --- */
+    /* Deep Blue -> Purple -> Teal */
+    background: linear-gradient(-45deg, #1a2980, #26d0ce, #1e3c72, #2a5298);
     background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    animation: gradientBG 10s ease infinite;
+    min-height: 100vh;
 }
-/* ---------------------------------------- */
 
 /* 2. Navigation */
 .navbar {
@@ -51,14 +52,12 @@ body {
     color: var(--primary-color) !important;
 }
 
-/* 3. Hero Header - ALSO ANIMATED */
+/* 3. Hero Header */
 header {
-    /* Made this gradient move too for a cooler effect */
-    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #1a1a2e);
-    background-size: 400% 400%;
-    animation: gradientBG 10s ease infinite;
+    background: #1a1a2e; /* Solid dark background for contrast against the body */
     padding: 120px 0 100px;
     margin-bottom: 0;
+    border-bottom: 5px solid rgba(255,255,255,0.1);
 }
 
 header h1 {
@@ -69,19 +68,29 @@ header h1 {
 section {
     position: relative;
     scroll-margin-top: 70px;
-}
-
-/* NEW: Makes sections see-through so you can see the moving background */
-.bg-white, .bg-light, #about, #education, #projects, #personal, #guestbook {
-    background-color: rgba(255, 255, 255, 0.85) !important; /* Semi-transparent */
-    backdrop-filter: blur(5px); /* Blurs the background behind */
-}
-
-/* Add some spacing between sections so the background shows in the gaps */
-section {
-    margin-bottom: 2rem; 
     padding-top: 3rem;
     padding-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+/* --- GLASS EFFECT --- */
+/* This makes the white boxes slightly see-through so the blue background shows */
+.bg-white, .bg-light, #about, #education, #projects, #personal, #guestbook {
+    background-color: rgba(255, 255, 255, 0.92) !important; /* 92% opaque white */
+    backdrop-filter: blur(5px);
+    border-radius: 15px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+}
+
+/* Remove default bootstrap background from section containers to let glass effect work */
+#education.bg-light, #personal.bg-white {
+    background-color: transparent !important;
+}
+/* Re-apply the glass effect to the CONTAINER inside the section instead */
+#education .container, #personal .container, #projects .container, #guestbook .container {
+    background-color: rgba(255, 255, 255, 0.92);
+    padding: 3rem;
+    border-radius: 15px;
 }
 
 .section-title {
@@ -118,7 +127,7 @@ section {
     border-radius: 12px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: rgba(255, 255, 255, 0.95); /* Slightly less transparent for readability */
+    background: white; /* Cards remain solid white for readability */
 }
 
 .project-card:hover {
@@ -145,6 +154,7 @@ section {
 /* 8. Footer & Social Icons */
 footer {
     background-color: #1a1a2e;
+    margin-top: 3rem;
 }
 
 .social-icons a {
@@ -209,4 +219,61 @@ footer {
     font-style: italic;
     color: var(--secondary-color);
     margin-bottom: 0;
+}
+
+/* 10. CSS FOR CLICKABLE IMAGES */
+.cursor-pointer {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+/* Visual feedback when hovering */
+.cursor-pointer:hover {
+    transform: scale(1.03);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+/* 11. CSS FOR THE FULL SCREEN MODAL */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Dark background */
+    z-index: 9999; /* Sit on top of everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.modal-image {
+    max-width: 95%;
+    max-height: 90vh;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    border: 2px solid white;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 10000;
+    line-height: 1;
+    background: rgba(0,0,0,0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close-btn:hover {
+    background: rgba(255,255,255,0.2);
 }
