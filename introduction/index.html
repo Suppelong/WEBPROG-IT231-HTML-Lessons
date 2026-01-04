@@ -9,6 +9,45 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        /* NEW STYLES FOR THE MODAL */
+        .cursor-pointer {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .cursor-pointer:hover {
+            transform: scale(1.02);
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1050;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-image {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            z-index: 1060;
+        }
+    </style>
 </head>
 <body>
 
@@ -122,14 +161,14 @@
         <section id="projects" class="py-5">
             <div class="container">
                 <h2 class="text-center mb-5 section-title">My Projects</h2>
-                <project-gallery></project-gallery> 
+                <project-gallery @open-image="openModal"></project-gallery> 
             </div>
         </section>
 
         <section id="personal" class="py-5 bg-white">
             <div class="container">
                 <h2 class="text-center mb-5 section-title">Life & Hobbies</h2>
-                <personal-gallery></personal-gallery> 
+                <personal-gallery @open-image="openModal"></personal-gallery> 
             </div>
         </section>
 
@@ -146,6 +185,12 @@
                 </div>
             </div>
         </section>
+
+        <image-modal 
+            v-if="modalVisible" 
+            :image-src="currentImage" 
+            @close="closeModal">
+        </image-modal>
 
     </div>
 
@@ -169,14 +214,31 @@
     <script>
         const { createApp } = Vue
 
-        const app = createApp({})
+        const app = createApp({
+            data() {
+                return {
+                    modalVisible: false,
+                    currentImage: ''
+                }
+            },
+            methods: {
+                openModal(src) {
+                    this.currentImage = src;
+                    this.modalVisible = true;
+                },
+                closeModal() {
+                    this.modalVisible = false;
+                    this.currentImage = '';
+                }
+            }
+        })
 
         // 1. PROJECTS GALLERY COMPONENT
         app.component('project-gallery', {
             template: `
                 <div class="row g-4">
                     <div class="col-md-4" v-for="(img, index) in images" :key="index">
-                        <div class="card h-100 shadow-sm border-0 project-card">
+                        <div class="card h-100 shadow-sm border-0 project-card cursor-pointer" @click="$emit('open-image', img.src)">
                             <div class="img-wrapper">
                                 <img :src="img.src" class="card-img-top" :alt="img.alt">
                             </div>
@@ -188,6 +250,7 @@
                     </div>
                 </div>
             `,
+            emits: ['open-image'],
             data() {
                 return {
                     images: [
@@ -204,7 +267,7 @@
             template: `
                 <div class="row g-4">
                     <div class="col-md-4" v-for="(img, index) in images" :key="index">
-                        <div class="card h-100 shadow-sm border-0 project-card">
+                        <div class="card h-100 shadow-sm border-0 project-card cursor-pointer" @click="$emit('open-image', img.src)">
                             <div class="img-wrapper">
                                 <img :src="img.src" class="card-img-top" :alt="img.alt">
                             </div>
@@ -216,6 +279,7 @@
                     </div>
                 </div>
             `,
+            emits: ['open-image'],
             data() {
                 return {
                     images: [
@@ -261,6 +325,18 @@
                     setTimeout(() => { this.submitted = false; this.name = ''; this.message = ''; }, 3000);
                 }
             }
+        })
+
+        // 4. MODAL POPUP COMPONENT (NEW)
+        app.component('image-modal', {
+            props: ['imageSrc'],
+            emits: ['close'],
+            template: `
+                <div class="modal-overlay" @click="$emit('close')">
+                    <span class="close-btn" @click="$emit('close')">&times;</span>
+                    <img :src="imageSrc" class="modal-image" @click.stop>
+                </div>
+            `
         })
 
         app.mount('#app')
