@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#gallery">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#guestbook">Guestbook</a></li>
                     <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
                 </ul>
@@ -32,28 +32,44 @@
         </div>
     </nav>
 
-    <header class="text-center">
+    <header class="text-center text-white">
         <div class="container">
-            <h1 class="display-4">Hello, I'm Beejay Carpio</h1>
+            <h1 class="display-4 fw-bold">Hello, I'm Beejay Carpio</h1>
             <p class="lead">IT Student | Gamer | Creative Thinker</p>
+            <a href="#projects" class="btn btn-outline-light mt-3 rounded-pill px-4">View My Work</a>
         </div>
     </header>
 
     <section id="about" class="py-5">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-4 text-center text-lg-start mb-4 mb-lg-0">
-                    <img src="images/Beejay.jpg" alt="Beejay Carpio" class="img-fluid rounded-circle shadow profile-img">
+            <div class="row align-items-center bg-white p-5 rounded shadow-sm">
+                <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                    <img src="images/Beejay.jpg" alt="Beejay Carpio" class="img-fluid rounded-circle profile-img shadow">
                 </div>
                 <div class="col-lg-8">
-                    <h2 class="fw-bold mb-4 section-title">About Me</h2>
-                    <p class="lead text-secondary">
+                    <h2 class="fw-bold mb-3 text-primary">About Me</h2>
+                    <p class="text-secondary lh-lg">
                         I am currently pursuing a Bachelor’s degree in Information Technology at Asia Pacific College. 
                         In my free time, I enjoy playing both offline and online games. I also have a passion for reading 
                         manga, manhwa, and light novels, which fuel my creativity and imagination. As a naturally curious 
                         person, I love exploring new ideas and continuously learning about different subjects to broaden 
                         my knowledge and skills.
                     </p>
+                    
+                    <div class="d-flex mt-4 gap-4">
+                        <div class="text-center">
+                            <i class="bi bi-controller fs-2 text-info"></i>
+                            <p class="small text-muted">Gamer</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="bi bi-book fs-2 text-warning"></i>
+                            <p class="small text-muted">Reader</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="bi bi-code-slash fs-2 text-danger"></i>
+                            <p class="small text-muted">Coder</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,18 +77,21 @@
 
     <div id="app">
         
-        <section id="gallery" class="py-5 bg-light">
+        <section id="projects" class="py-5">
             <div class="container">
                 <h2 class="text-center mb-5 section-title">My Projects</h2>
                 <image-gallery></image-gallery> 
             </div>
         </section>
 
-        <section id="guestbook" class="py-5">
+        <section id="guestbook" class="py-5 bg-white">
             <div class="container">
-                <h2 class="text-center mb-4 section-title">Guestbook Survey</h2>
                 <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-6">
+                    <div class="col-lg-6">
+                        <div class="text-center mb-4">
+                            <h2 class="section-title">Guestbook</h2>
+                            <p class="text-muted">Leave a message or feedback!</p>
+                        </div>
                         <guestbook-form></guestbook-form>
                     </div>
                 </div>
@@ -81,21 +100,20 @@
 
     </div>
 
-    <footer class="bg-dark text-white text-center py-5 mt-auto">
+    <footer class="text-center py-5 mt-auto text-white">
         <div class="container">
             <h5 class="mb-4">Connect with Me</h5>
             
             <div class="mb-4 social-icons">
-                <a href="https://www.linkedin.com/in/beejay-carpio-b01947322" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                <a href="https://www.github.com/Suppelong" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
-                <a href="https://www.facebook.com/beejay.carpio" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
-                <a href="https://www.instagram.com/bjycrp" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/beejay-carpio-b01947322" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.github.com/Suppelong" target="_blank"><i class="bi bi-github"></i></a>
+                <a href="https://www.facebook.com/beejay.carpio" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/bjycrp" target="_blank"><i class="bi bi-instagram"></i></a>
             </div>
 
-            <hr class="border-secondary w-50 mx-auto my-4">
-            
-            <p class="small mb-2">&copy; 2026 Beejay Carpio. All Rights Reserved.</p>
-            <p class="small"><a href="resources.html" class="text-secondary text-decoration-none">View Resource Documentation</a></p>
+            <hr class="border-secondary w-50 mx-auto my-4 opacity-25">
+            <p class="small text-white-50 mb-2">&copy; 2026 Beejay Carpio. All Rights Reserved.</p>
+            <p class="small"><a href="resources.html" class="text-white-50 text-decoration-none">View Resource Documentation</a></p>
         </div>
     </footer>
 
@@ -106,16 +124,18 @@
 
         const app = createApp({})
 
-        // 1. Projects Gallery Component (Updated Images and Text)
+        // 1. PROJECTS GALLERY COMPONENT
         app.component('image-gallery', {
             template: `
-                <div class="row">
-                    <div class="col-md-4 mb-4" v-for="(img, index) in images" :key="index">
-                        <div class="card h-100 shadow-sm border-0">
-                            <img :src="img.src" class="card-img-top" :alt="img.alt">
+                <div class="row g-4">
+                    <div class="col-md-4" v-for="(img, index) in images" :key="index">
+                        <div class="card h-100 shadow-sm border-0 project-card">
+                            <div class="img-wrapper">
+                                <img :src="img.src" class="card-img-top" :alt="img.alt">
+                            </div>
                             <div class="card-body">
-                                <h5 class="card-title">{{ img.title }}</h5>
-                                <p class="card-text text-muted">{{ img.caption }}</p>
+                                <h5 class="card-title fw-bold">{{ img.title }}</h5>
+                                <p class="card-text text-muted small">{{ img.caption }}</p>
                             </div>
                         </div>
                     </div>
@@ -123,50 +143,43 @@
             `,
             data() {
                 return {
+                    // EXACT FILENAMES from your screenshot
                     images: [
-                        { src: 'images/BorrowIT.png', title: 'BorrowIT', alt: 'BorrowIT Project', caption: 'A collaborative project for managing item loans.' },
-                        { src: 'images/DropStock.png', title: 'DropStock', alt: 'DropStock Project', caption: 'An inventory system built with classmates.' },
-                        { src: 'images/How to Code your Dragon.png', title: 'How to Code your Dragon', alt: 'Game Development', caption: 'A fun, educational coding game project.' }
+                        { src: 'images/BorrowIT.png', title: 'BorrowIT', alt: 'BorrowIT App', caption: 'An item borrowing management system.' },
+                        { src: 'images/DropStock.png', title: 'DropStock', alt: 'DropStock System', caption: 'Inventory management solution.' },
+                        { src: 'images/How to Code your Dragon.png', title: 'How to Code Your Dragon', alt: 'Coding Game', caption: 'An educational coding game.' }
                     ]
                 }
             }
         })
 
-        // 2. Guestbook Component
+        // 2. GUESTBOOK COMPONENT
         app.component('guestbook-form', {
             template: `
-                <div class="card p-4 shadow border-0">
+                <div class="card p-4 shadow border-0 bg-light">
                     <div v-if="submitted" class="alert alert-success">
-                        Thanks for signing the guestbook, {{ name }}!
+                        Thanks, {{ name }}! Your message has been sent.
                     </div>
                     <form v-else @submit.prevent="submitForm">
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Name</label>
-                            <input type="text" v-model="name" class="form-control" required placeholder="Your Name">
+                            <label class="form-label fw-bold text-dark">Name</label>
+                            <input type="text" v-model="name" class="form-control" required placeholder="Enter your name">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Message</label>
-                            <textarea v-model="message" class="form-control" rows="3" required placeholder="Leave a message..."></textarea>
+                            <label class="form-label fw-bold text-dark">Message</label>
+                            <textarea v-model="message" class="form-control" rows="3" required placeholder="Write a message..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100 rounded-pill">Sign Guestbook</button>
+                        <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Post Comment</button>
                     </form>
                 </div>
             `,
             data() {
-                return {
-                    name: '',
-                    message: '',
-                    submitted: false
-                }
+                return { name: '', message: '', submitted: false }
             },
             methods: {
                 submitForm() {
                     this.submitted = true;
-                    setTimeout(() => {
-                        this.submitted = false;
-                        this.name = '';
-                        this.message = '';
-                    }, 3000);
+                    setTimeout(() => { this.submitted = false; this.name = ''; this.message = ''; }, 3000);
                 }
             }
         })
