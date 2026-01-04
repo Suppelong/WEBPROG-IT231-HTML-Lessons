@@ -25,7 +25,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#guestbook">Guestbook</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#guestbook">Leave a comment</a></li>
                     <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
                 </ul>
             </div>
@@ -89,8 +89,8 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
                         <div class="text-center mb-4">
-                            <h2 class="section-title">Guestbook</h2>
-                            <p class="text-muted">Leave a message or feedback!</p>
+                            <h2 class="section-title">Leave a comment</h2>
+                            <p class="text-muted">I'd love to hear your feedback!</p>
                         </div>
                         <guestbook-form></guestbook-form>
                     </div>
@@ -143,7 +143,6 @@
             `,
             data() {
                 return {
-                    // EXACT FILENAMES from your screenshot
                     images: [
                         { src: 'images/BorrowIT.png', title: 'BorrowIT', alt: 'BorrowIT App', caption: 'An item borrowing management system.' },
                         { src: 'images/DropStock.png', title: 'DropStock', alt: 'DropStock System', caption: 'Inventory management solution.' },
@@ -153,12 +152,12 @@
             }
         })
 
-        // 2. GUESTBOOK COMPONENT
+        // 2. COMMENT FORM COMPONENT (Renamed Logic)
         app.component('guestbook-form', {
             template: `
                 <div class="card p-4 shadow border-0 bg-light">
                     <div v-if="submitted" class="alert alert-success">
-                        Thanks, {{ name }}! Your message has been sent.
+                        Thanks, {{ name }}! Your comment has been posted.
                     </div>
                     <form v-else @submit.prevent="submitForm">
                         <div class="mb-3">
@@ -166,8 +165,8 @@
                             <input type="text" v-model="name" class="form-control" required placeholder="Enter your name">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label fw-bold text-dark">Message</label>
-                            <textarea v-model="message" class="form-control" rows="3" required placeholder="Write a message..."></textarea>
+                            <label class="form-label fw-bold text-dark">Comment</label>
+                            <textarea v-model="message" class="form-control" rows="3" required placeholder="Write your comment here..."></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Post Comment</button>
                     </form>
