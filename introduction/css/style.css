@@ -1,43 +1,35 @@
-/* -----------------------------------------------------------
-   1. GLOBAL SETTINGS & TYPOGRAPHY
-   (Satisfies Rubric #2 Consistency & #10 Aesthetic Design)
------------------------------------------------------------ */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+/* 1. Global Settings & Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
-    /* Color Palette - Easy to change here for the whole site */
-    --primary-color: #2c3e50;  /* Navy Blue */
+    --primary-color: #2c3e50;  /* Dark Blue */
     --accent-color: #18bc9c;   /* Teal */
-    --bg-light: #f8f9fa;       /* Off-white */
-    --text-dark: #333333;
+    --text-dark: #333;
+    --bg-light: #f8f9fa;
 }
 
 body {
-    font-family: 'Poppins', sans-serif; /* Cleaner than default Bootstrap font */
+    font-family: 'Poppins', sans-serif;
     color: var(--text-dark);
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
-/* Smooth scrolling for anchor links */
-html {
-    scroll-behavior: smooth;
-}
-
-/* -----------------------------------------------------------
-   2. CUSTOM NAVBAR
-   (Satisfies Rubric #5 Navigation Format)
------------------------------------------------------------ */
+/* 2. Navbar Styling */
 .navbar {
     background-color: var(--primary-color) !important;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .navbar-brand {
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1.5rem;
     letter-spacing: 1px;
 }
 
 .nav-link {
+    font-weight: 400;
+    margin-left: 15px;
     transition: color 0.3s ease;
 }
 
@@ -45,105 +37,85 @@ html {
     color: var(--accent-color) !important;
 }
 
-/* -----------------------------------------------------------
-   3. HERO SECTION (Originality)
-   Replaces the plain background with a gradient or image
------------------------------------------------------------ */
+/* 3. Hero Header Styling */
 header {
-    /* Linear gradient background for a modern look */
-    background: linear-gradient(135deg, var(--primary-color), #4ca1af); 
+    background: linear-gradient(135deg, var(--primary-color), #34495e);
     color: white;
-    padding: 100px 0; /* More breathing room */
-    margin-bottom: 2rem;
+    padding: 120px 0 100px;
+    margin-bottom: 0;
 }
 
 header h1 {
     font-weight: 700;
-    font-size: 3rem;
 }
 
-header .lead {
-    font-weight: 300;
-    font-size: 1.5rem;
-    opacity: 0.9;
+/* 4. Section Headings */
+.section-title {
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
 }
 
-/* -----------------------------------------------------------
-   4. VUE GALLERY CARD ANIMATIONS
-   (Satisfies Rubric #9 Originality & #10 Aesthetics)
------------------------------------------------------------ */
+/* Underline effect for titles */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--accent-color);
+    margin: 10px auto 0;
+}
+
+/* 5. Gallery Card Hover Effect (Originality) */
 .card {
-    border: none;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden; /* Keeps image inside card corners */
+    overflow: hidden;
 }
 
-/* The Zoom Effect on Hover */
 .card:hover {
-    transform: translateY(-5px) scale(1.02); /* Moves up slightly and zooms */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
 }
 
 .card-img-top {
-    height: 200px; /* Forces all images to be the same height */
-    object-fit: cover; /* Ensures images don't stretch weirdly */
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-.card-title {
-    color: var(--primary-color);
-    font-weight: 600;
+.card:hover .card-img-top {
+    transform: scale(1.05);
 }
 
-/* -----------------------------------------------------------
-   5. GUESTBOOK & FORMS
------------------------------------------------------------ */
+/* 6. Buttons */
 .btn-primary {
     background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    padding: 10px 30px;
-    border-radius: 50px; /* Rounded pill buttons */
+    border: none;
+    padding: 10px 25px;
+    font-weight: 600;
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
     background-color: var(--accent-color);
-    border-color: var(--accent-color);
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
-/* -----------------------------------------------------------
-   6. FOOTER
------------------------------------------------------------ */
+/* 7. Footer & Social Icons */
 footer {
-    background-color: var(--primary-color) !important;
-    margin-top: 50px;
+    background-color: #1a252f !important;
 }
 
-footer a {
-    color: var(--accent-color);
+.social-icons a {
+    color: white;
+    font-size: 1.8rem;
+    margin: 0 15px;
+    display: inline-block;
+    transition: all 0.3s ease;
     text-decoration: none;
 }
 
-footer a:hover {
-    text-decoration: underline;
-    color: white;
-}
-
-/* -----------------------------------------------------------
-   7. MOBILE RESPONSIVENESS TWEAKS
-   (Satisfies Rubric #8 Mobile Responsive)
------------------------------------------------------------ */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem; /* Smaller text on phones */
-    }
-    
-    header {
-        padding: 60px 0; /* Less padding on phones */
-    }
-    
-    form.w-50 {
-        width: 90% !important; /* Make form wider on mobile */
-    }
+.social-icons a:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px) scale(1.1);
 }
