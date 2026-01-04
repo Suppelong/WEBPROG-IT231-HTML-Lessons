@@ -1,81 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>My Personal Profile</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <link rel="stylesheet" href="css/style.css">
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Resume</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
 
-<div class="container profile-container">
-  <h1 class="mb-3">My Personal Profile Web page</h1>
-  
-  <div class="mb-4">
-    <p class="fs-5">
-      <strong>About Me</strong><br>
-      Name: Carpio, Beejay A.<br>
-      <small class="text-muted">( Do not include birthdate / age / contact information )</small>
-    </p>
-  </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">MyName</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#guestbook">Guestbook</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <div class="row no-gutters">
-    <div class="col-md-6 my-blue-bg">
-      <div class="content-box">
-        <h3>Education</h3>
-        <p>Currently taking Bachelors Degree in Information Technology<br>
-        <strong>Course:</strong> Bachelors of Science in Information Technology</p>
-      </div>
-    </div>
-    
-    <div class="col-md-6 my-black-bg">
-      <div class="content-box">
-        <h3>IT Experience</h3>
-        <ul>
-            <li>Flappy Dragon</li>
-            <li>BorrowIT</li>
-            <li>Dropstock Shoe Reselling Website</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    <header class="bg-light py-5 text-center" id="about">
+        <div class="container">
+            <h1>Hello, I'm [Your Name]</h1>
+            <p class="lead">Web Developer | Designer | Student</p>
+        </div>
+    </header>
 
-  <div style="height: 20px;"></div>
-
-  <div class="row no-gutters">
-    <div class="col-md-4 my-blue-bg">
-      <div class="content-box">
-        <h5>Hobbies & Interests</h5>
-        <p>Reading novels and playing online games</p>
-      </div>
-    </div>
-    
-    <div class="col-md-4 my-black-bg">
-      <div class="content-box">
-        <h5>Goals In Life / Dream</h5>
-        <p>I want to be a successful Network Infrastructure Engineer</p>
-      </div>
-    </div>
-    
-    <div class="col-md-4 my-blue-bg text-center">
-      <div class="content-box">
-        <h5 class="mb-3">Picture Gallery</h5>
+    <div id="app">
         
-        <img src="../Home/profile.jpg" 
-             alt="Me with a jacket" 
-             class="img-fluid rounded-circle border border-3 border-white"
-             style="max-width: 150px; height: auto;">
-             
-      </div>
+        <section id="gallery" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">My Picture Gallery</h2>
+                <image-gallery></image-gallery> 
+            </div>
+        </section>
+
+        <section id="guestbook" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-4">Guestbook Survey</h2>
+                <guestbook-form></guestbook-form>
+            </div>
+        </section>
+
     </div>
-  </div>
 
-</div>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2026 MyName. All Rights Reserved.</p>
+        <p><a href="resources.html" class="text-white">View Resource Documentation</a></p>
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const { createApp } = Vue
+
+        const app = createApp({
+            // Main app logic can go here
+        })
+
+        // 1. Define Gallery Component
+        app.component('image-gallery', {
+            template: `
+                <div class="row">
+                    <div class="col-md-4 mb-3" v-for="(img, index) in images" :key="index">
+                        <div class="card">
+                            <img :src="img.src" class="card-img-top" :alt="img.alt">
+                            <div class="card-body">
+                                <p class="card-text">{{ img.caption }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            data() {
+                return {
+                    images: [
+                        { src: 'images/sample1.jpg', alt: 'Project 1', caption: 'My First Project' },
+                        { src: 'images/sample2.jpg', alt: 'Project 2', caption: 'Web Design Work' },
+                        // Add more images here
+                    ]
+                }
+            }
+        })
+
+        // 2. Define Guestbook Component
+        app.component('guestbook-form', {
+            template: `
+                <form @submit.prevent="submitForm" class="w-50 mx-auto">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" v-model="name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Message</label>
+                        <textarea v-model="message" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign Guestbook</button>
+                    <div v-if="submitted" class="alert alert-success mt-3">Thanks for signing, {{ name }}!</div>
+                </form>
+            `,
+            data() {
+                return {
+                    name: '',
+                    message: '',
+                    submitted: false
+                }
+            },
+            methods: {
+                submitForm() {
+                    this.submitted = true;
+                    // Here you would usually send data to a backend
+                }
+            }
+        })
+
+        app.mount('#app')
+    </script>
 </body>
 </html>
