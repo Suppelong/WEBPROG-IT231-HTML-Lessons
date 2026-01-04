@@ -25,6 +25,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#personal">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="#guestbook">Leave a comment</a></li>
                     <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
                 </ul>
@@ -74,17 +75,23 @@
             </div>
         </div>
     </section>
-
     <div id="app">
         
         <section id="projects" class="py-5">
             <div class="container">
                 <h2 class="text-center mb-5 section-title">My Projects</h2>
-                <image-gallery></image-gallery> 
+                <project-gallery></project-gallery> 
             </div>
         </section>
 
-        <section id="guestbook" class="py-5 bg-white">
+        <section id="personal" class="py-5 bg-white">
+            <div class="container">
+                <h2 class="text-center mb-5 section-title">Life & Hobbies</h2>
+                <personal-gallery></personal-gallery> 
+            </div>
+        </section>
+
+        <section id="guestbook" class="py-5">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
@@ -103,14 +110,12 @@
     <footer class="text-center py-5 mt-auto text-white">
         <div class="container">
             <h5 class="mb-4">Connect with Me</h5>
-            
             <div class="mb-4 social-icons">
                 <a href="https://www.linkedin.com/in/beejay-carpio-b01947322" target="_blank"><i class="bi bi-linkedin"></i></a>
                 <a href="https://www.github.com/Suppelong" target="_blank"><i class="bi bi-github"></i></a>
                 <a href="https://www.facebook.com/beejay.carpio" target="_blank"><i class="bi bi-facebook"></i></a>
                 <a href="https://www.instagram.com/bjycrp" target="_blank"><i class="bi bi-instagram"></i></a>
             </div>
-
             <hr class="border-secondary w-50 mx-auto my-4 opacity-25">
             <p class="small text-white-50 mb-2">&copy; 2026 Beejay Carpio. All Rights Reserved.</p>
             <p class="small"><a href="resources.html" class="text-white-50 text-decoration-none">View Resource Documentation</a></p>
@@ -125,7 +130,7 @@
         const app = createApp({})
 
         // 1. PROJECTS GALLERY COMPONENT
-        app.component('image-gallery', {
+        app.component('project-gallery', {
             template: `
                 <div class="row g-4">
                     <div class="col-md-4" v-for="(img, index) in images" :key="index">
@@ -152,7 +157,36 @@
             }
         })
 
-        // 2. COMMENT FORM COMPONENT (Renamed Logic)
+        // 2. PERSONAL GALLERY COMPONENT (Ensure these match your actual personal photos)
+        app.component('personal-gallery', {
+            template: `
+                <div class="row g-4">
+                    <div class="col-md-4" v-for="(img, index) in images" :key="index">
+                        <div class="card h-100 shadow-sm border-0 project-card">
+                            <div class="img-wrapper">
+                                <img :src="img.src" class="card-img-top" :alt="img.alt">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">{{ img.title }}</h5>
+                                <p class="card-text text-muted small">{{ img.caption }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            data() {
+                return {
+                    // IMPORTANT: Update these filenames to pictures you want in your personal gallery
+                    images: [
+                        { src: 'images/Beejay.jpg', title: 'My Portrait', alt: 'Portrait', caption: 'A casual shot.' },
+                        { src: 'images/BorrowIT.png', title: 'Gaming', alt: 'Gaming', caption: 'Playing online games.' },
+                        { src: 'images/DropStock.png', title: 'Reading', alt: 'Reading', caption: 'My Manga collection.' }
+                    ]
+                }
+            }
+        })
+
+        // 3. COMMENT FORM COMPONENT
         app.component('guestbook-form', {
             template: `
                 <div class="card p-4 shadow border-0 bg-light">

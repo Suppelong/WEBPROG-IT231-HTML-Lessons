@@ -11,14 +11,16 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--light-bg); /* Removes the "All White" look */
+    background-color: var(--light-bg);
     color: #333;
+    line-height: 1.7;
 }
 
 /* 2. Navigation */
 .navbar {
     background-color: #1a1a2e !important; /* Dark Navy */
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 1rem 0;
 }
 
 .navbar-brand {
@@ -26,20 +28,33 @@ body {
     letter-spacing: 1px;
 }
 
+.nav-link {
+    font-weight: 400;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
 /* 3. Hero Header */
 header {
-    /* Rich Gradient Background */
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    padding: 100px 0;
+    padding: 120px 0 100px;
     margin-bottom: 0;
+}
+
+header h1 {
+    font-weight: 700;
 }
 
 /* 4. Section Styling */
 section {
     position: relative;
+    scroll-margin-top: 70px; /* Prevents navbar from covering section title on click */
 }
 
-/* Add white background to specific cards/containers to make them stand out */
 .bg-white {
     background-color: var(--card-bg) !important;
 }
@@ -53,16 +68,27 @@ section {
     padding-bottom: 10px;
 }
 
-/* 5. Profile Picture */
+/* --- NEW: Profile Picture Styling --- */
 .profile-img {
     width: 250px;
     height: 250px;
-    object-fit: cover; /* Ensures face isn't stretched */
-    border: 5px solid white;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Soft shadow */
+    object-fit: cover; /* Ensures the image doesn't stretch */
+    border: 5px solid white; /* Adds a clean white frame */
 }
 
-/* 6. Project Cards (Better Aesthetics) */
+/* 5. Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    transform: scale(1.02);
+}
+
+/* 6. Gallery Cards */
 .project-card {
     border-radius: 12px;
     overflow: hidden;
@@ -77,13 +103,13 @@ section {
 
 .img-wrapper {
     overflow: hidden;
-    height: 200px;
+    height: 220px;
 }
 
 .card-img-top {
     height: 100%;
     width: 100%;
-    object-fit: cover; /* Ensures images fill the box perfectly */
+    object-fit: cover;
     transition: transform 0.5s ease;
 }
 
@@ -98,7 +124,7 @@ footer {
 
 .social-icons a {
     color: white;
-    background-color: rgba(255,255,255,0.1); /* Subtle circle background */
+    background-color: rgba(255,255,255,0.1);
     width: 45px;
     height: 45px;
     line-height: 45px;
