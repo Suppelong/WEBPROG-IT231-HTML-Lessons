@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#guestbook">Guestbook</a></li>
                     <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
                 </ul>
@@ -41,8 +41,11 @@
 
     <section id="about" class="py-5">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-center text-lg-start mb-4 mb-lg-0">
+                    <img src="images/Beejay.jpg" alt="Beejay Carpio" class="img-fluid rounded-circle shadow profile-img">
+                </div>
+                <div class="col-lg-8">
                     <h2 class="fw-bold mb-4 section-title">About Me</h2>
                     <p class="lead text-secondary">
                         I am currently pursuing a Bachelor’s degree in Information Technology at Asia Pacific College. 
@@ -60,7 +63,7 @@
         
         <section id="gallery" class="py-5 bg-light">
             <div class="container">
-                <h2 class="text-center mb-5 section-title">My Picture Gallery</h2>
+                <h2 class="text-center mb-5 section-title">My Projects</h2>
                 <image-gallery></image-gallery> 
             </div>
         </section>
@@ -83,21 +86,10 @@
             <h5 class="mb-4">Connect with Me</h5>
             
             <div class="mb-4 social-icons">
-                <a href="https://www.linkedin.com/in/beejay-carpio-b01947322" target="_blank" title="LinkedIn">
-                    <i class="bi bi-linkedin"></i>
-                </a>
-                
-                <a href="https://www.github.com/Suppelong" target="_blank" title="GitHub">
-                    <i class="bi bi-github"></i>
-                </a>
-                
-                <a href="https://www.facebook.com/beejay.carpio" target="_blank" title="Facebook">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                
-                <a href="https://www.instagram.com/bjycrp" target="_blank" title="Instagram">
-                    <i class="bi bi-instagram"></i>
-                </a>
+                <a href="https://www.linkedin.com/in/beejay-carpio-b01947322" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.github.com/Suppelong" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
+                <a href="https://www.facebook.com/beejay.carpio" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/bjycrp" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
             </div>
 
             <hr class="border-secondary w-50 mx-auto my-4">
@@ -114,7 +106,7 @@
 
         const app = createApp({})
 
-        // 1. Gallery Component
+        // 1. Projects Gallery Component (Updated Images and Text)
         app.component('image-gallery', {
             template: `
                 <div class="row">
@@ -132,9 +124,9 @@
             data() {
                 return {
                     images: [
-                        { src: 'images/project1.jpg', title: 'IT Studies', alt: 'IT Project', caption: 'Exploring new technologies at APC.' },
-                        { src: 'images/project2.jpg', title: 'Gaming', alt: 'Gaming Setup', caption: 'Offline and online gaming setup.' },
-                        { src: 'images/project3.jpg', title: 'Creative Reading', alt: 'Books', caption: 'Collection of Manga and Manhwa.' }
+                        { src: 'images/BorrowIT.png', title: 'BorrowIT', alt: 'BorrowIT Project', caption: 'A collaborative project for managing item loans.' },
+                        { src: 'images/DropStock.png', title: 'DropStock', alt: 'DropStock Project', caption: 'An inventory system built with classmates.' },
+                        { src: 'images/How to Code your Dragon.png', title: 'How to Code your Dragon', alt: 'Game Development', caption: 'A fun, educational coding game project.' }
                     ]
                 }
             }
