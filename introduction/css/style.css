@@ -1,16 +1,14 @@
-/* 1. Global Settings & Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
-    --primary-color: #0d6efd; /* Brighter Blue */
-    --accent-color: #18bc9c;  /* Teal */
+    --primary-color: #0d6efd; 
+    --accent-color: #18bc9c;  
     --secondary-color: #6c757d;
     --dark-bg: #212529;
     --light-bg: #eff2f7; 
     --card-bg: #ffffff;
 }
 
-/* --- ANIMATION DEFINITION --- */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -21,16 +19,12 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #333;
     line-height: 1.7;
-
-    /* --- BOLD MOVING BACKGROUND --- */
-    /* Deep Blue -> Purple -> Teal */
     background: linear-gradient(-45deg, #1a2980, #26d0ce, #1e3c72, #2a5298);
     background-size: 400% 400%;
     animation: gradientBG 10s ease infinite;
     min-height: 100vh;
 }
 
-/* 2. Navigation */
 .navbar {
     background-color: #1a1a2e !important;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -52,9 +46,8 @@ body {
     color: var(--primary-color) !important;
 }
 
-/* 3. Hero Header */
 header {
-    background: #1a1a2e; /* Solid dark background for contrast against the body */
+    background: #1a1a2e; 
     padding: 120px 0 100px;
     margin-bottom: 0;
     border-bottom: 5px solid rgba(255,255,255,0.1);
@@ -64,7 +57,6 @@ header h1 {
     font-weight: 700;
 }
 
-/* 4. Section Styling & Glassmorphism */
 section {
     position: relative;
     scroll-margin-top: 70px;
@@ -73,20 +65,17 @@ section {
     margin-bottom: 2rem;
 }
 
-/* --- GLASS EFFECT --- */
-/* This makes the white boxes slightly see-through so the blue background shows */
 .bg-white, .bg-light, #about, #education, #projects, #personal, #guestbook {
-    background-color: rgba(255, 255, 255, 0.92) !important; /* 92% opaque white */
+    background-color: rgba(255, 255, 255, 0.92) !important; 
     backdrop-filter: blur(5px);
     border-radius: 15px; 
     box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
 }
 
-/* Remove default bootstrap background from section containers to let glass effect work */
 #education.bg-light, #personal.bg-white {
     background-color: transparent !important;
 }
-/* Re-apply the glass effect to the CONTAINER inside the section instead */
+
 #education .container, #personal .container, #projects .container, #guestbook .container {
     background-color: rgba(255, 255, 255, 0.92);
     padding: 3rem;
@@ -102,7 +91,6 @@ section {
     padding-bottom: 10px;
 }
 
-/* 5. Profile Picture */
 .profile-img {
     width: 250px;
     height: 250px;
@@ -110,7 +98,6 @@ section {
     border: 5px solid white;
 }
 
-/* 6. Buttons */
 .btn-primary {
     background-color: var(--primary-color);
     border: none;
@@ -122,12 +109,11 @@ section {
     transform: scale(1.02);
 }
 
-/* 7. Gallery Cards */
 .project-card {
     border-radius: 12px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: white; /* Cards remain solid white for readability */
+    background: white; 
 }
 
 .project-card:hover {
@@ -151,7 +137,6 @@ section {
     transform: scale(1.1);
 }
 
-/* 8. Footer & Social Icons */
 footer {
     background-color: #1a1a2e;
     margin-top: 3rem;
@@ -175,7 +160,6 @@ footer {
     transform: translateY(-3px);
 }
 
-/* 9. Education Timeline Styling */
 .timeline {
     border-left: 3px solid var(--primary-color);
     margin-left: 10px;
@@ -221,26 +205,24 @@ footer {
     margin-bottom: 0;
 }
 
-/* 10. CSS FOR CLICKABLE IMAGES */
 .cursor-pointer {
     cursor: pointer;
     transition: transform 0.2s ease;
 }
-/* Visual feedback when hovering */
+
 .cursor-pointer:hover {
     transform: scale(1.03);
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }
 
-/* 11. CSS FOR THE FULL SCREEN MODAL */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9); /* Dark background */
-    z-index: 9999; /* Sit on top of everything */
+    background: rgba(0, 0, 0, 0.9); 
+    z-index: 9999; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -248,32 +230,4 @@ footer {
     backdrop-filter: blur(5px);
 }
 
-.modal-image {
-    max-width: 95%;
-    max-height: 90vh;
-    border-radius: 4px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    border: 2px solid white;
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    font-size: 3rem;
-    cursor: pointer;
-    z-index: 10000;
-    line-height: 1;
-    background: rgba(0,0,0,0.5);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.close-btn:hover {
-    background: rgba(255,255,255,0.2);
-}
+.modal-image
